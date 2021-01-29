@@ -16,11 +16,22 @@
 using namespace std;
 class Huffman {
 private:
+    class compare
+    {//a object function to set comparing rule of priority queue
+    public:
+        bool operator()(const Node* c1, const Node* c2) const
+        {
+            return c1->numOfRepeats > c2->numOfRepeats;
+        }
+    };
+    priority_queue<Node*, vector<Node*>, compare> pq;
+    priority_queue<Node*, vector<Node*>, compare> leafs;
     string fileName;
 public:
     bool isText();
     int findRepeatsNum(string text,char c);
     void separateChars(string str);
+    string textToString();
 };
 
 

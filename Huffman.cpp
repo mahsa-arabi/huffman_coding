@@ -96,6 +96,33 @@ bool Huffman::isText() {
     }
 
 }
+void Huffman::encode() {
+    string code="";
+    string text=textToString();
+    separateChars(text);
+    buildHuffmanTree();
+    ofstream MyFile("code.cmp",ios::out|ios::binary);
+    int n=leafs.size();
+    string s2="";
+    for (int k = 0; k <n ; ++k) {     //write information for decoding in file
+        MyFile<< leafs.top()->data<<leafs.top()->numOfRepeats ;
+        s2+=leafs.top()->data;
+        s2+=leafs.top()->numOfRepeats;
+        leafs.pop();
+    }
+    MyFile << '\n';
+    MyFile.close();
+    std::map<string, string>::iterator it;
+    for (int i = 0; i < text.size(); i++) {
+        string s = "";
+        s += text[i];
+        it = charactersCode.find(s);
+        code += it->second;
+    }
+    compress(code);
+
+}
+
 void Huffman::compress(string s) {
     //write the string in bytes in the file
     size_t number;

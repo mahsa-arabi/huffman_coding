@@ -36,6 +36,7 @@ public:
     map<string,string> creatCharsCode();
     void printHuffTreePostOrder(Node* p, int i);
     void buildHuffmanTree();
+    void compress(string s);
 };
 
 

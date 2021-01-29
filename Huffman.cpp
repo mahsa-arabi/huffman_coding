@@ -96,6 +96,39 @@ bool Huffman::isText() {
     }
 
 }
+void Huffman::compress(string s) {
+    //write the string in bytes in the file
+    size_t number;
+    int lastByte=0;  //num of bits in the last byte
+    //find num of bytes that is needed
+    if(s.length()%8!=0){
+        number=(s.length())/8 +1 ;
+        lastByte=(s.length())-((number-1)*8);
+    }
+    else  number=(s.length())/8 ;
+    //converting string of 0s and 1s to bytes
+    char bytes [number];
+    for (int i = 0; i <number ; ++i) {
+        bytes[i]=0;
+    }
+    for (int i = 0; i <number; ++i) {
+        for(int j=0;j<8;j++){
+            if(s[i*8+j]=='1'){
+                int n=pow(2,7-j);
+                bytes[i]=bytes[i]|n;
+            }
+        }
+    }
+    //write bytes to file
+    ofstream MyFile("code.cmp",ios::app|ios::binary);
+    for (int k = 0; k <number ; ++k) {
+        MyFile<<bytes[k];
+    }
+    MyFile<<lastByte ;
+    MyFile.close();
+
+}
+
 
 int Huffman::findRepeatsNum(string text, char c) {
     int count=0;

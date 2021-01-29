@@ -3,6 +3,30 @@
 //
 
 #include "Huffman.h"
+map<string, string> Huffman::creatCharsCode() {
+    //create each characters code
+    auto temp=leafs;
+    int n=leafs.size();
+    map<string,string> characters;
+
+    for (int k = 0; k <n ; ++k) {
+        string s="";
+        string c=leafs.top()->data;
+        auto temp=leafs.top();
+        while (temp->parent!=nullptr){
+            if (temp->isLeft){
+                s="0"+s;
+            }else{
+                s="1"+s;
+            }
+            temp=temp->parent;
+        }
+        characters.insert({c,s});
+        leafs.pop();
+    }
+    leafs=temp;
+    return characters;
+}
 bool Huffman::isText() {
     //return true if the file name is a text(.txt) if is need to be encoded (not decoded)
     int i=0;

@@ -32,6 +32,7 @@ public:
     int findRepeatsNum(string text,char c);
     void separateChars(string str);
     string textToString();
+    map<string,string> creatCharsCode();
 };
 
 

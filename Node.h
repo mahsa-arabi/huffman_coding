@@ -29,6 +29,7 @@ public:
     void setParent(Node *parent);
     Node *getRight() const;
     Node *getLeft() const;
+    Node & operator=(const Node & node);
 };
 
 

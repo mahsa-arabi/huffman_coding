@@ -51,6 +51,15 @@ Node *Node::getLeft() const {
     return left;
 }
 
+Node &Node::operator=(const Node &node) {
+    this->numOfRepeats=node.numOfRepeats;
+    this->data=node.data;
+    this->parent=node.parent;
+    this->right=node.right;
+    this->left=node.left;
+    this->isLeft=node.isLeft;
+    this->isRight=node.isRight;
+}
 
 
 

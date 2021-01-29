@@ -40,6 +40,7 @@ public:
     void encode();
     void buildHuffmanTree2();
     string decompress(string hmCode);
+    void decode();
 };
 
 

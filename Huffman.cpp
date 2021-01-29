@@ -168,6 +168,39 @@ void Huffman::encode() {
     compress(code);
 
 }
+void Huffman::decode() {
+    buildHuffmanTree2();
+    ifstream infile;
+    infile.open(this->fileName,ios::in|ios::binary);
+    list<Node*> nodes;
+    string sLine2;
+    string sLine;
+    if (infile.good()) {
+        getline(infile, sLine);
+        getline(infile, sLine2);
+    }
+    infile.close();
+    ofstream MyFile("decodedText.txt");
+    map<string,string>::iterator it;
+    map<string,string> reverseMap;
+
+    for(it = charactersCode.begin(); it != charactersCode.end(); ++it) {
+        reverseMap.insert({it->second,it->first});
+    }
+    sLine2=decompress(sLine2);
+    string s="";
+    for (int i = 0; i < sLine2.size(); i++) {
+        s+=sLine2[i];
+        if(reverseMap.find(s)!=reverseMap.end()){ //if the map contains s or not
+            it = reverseMap.find(s);
+            MyFile << it->second;
+            s="";
+        }
+    }
+
+
+    MyFile.close();
+}
 
 void Huffman::compress(string s) {
     //write the string in bytes in the file

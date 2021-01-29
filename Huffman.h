@@ -38,6 +38,7 @@ public:
     void buildHuffmanTree();
     void compress(string s);
     void encode();
+    void buildHuffmanTree2();
 };
 
 

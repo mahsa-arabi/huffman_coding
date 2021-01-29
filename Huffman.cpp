@@ -2,8 +2,14 @@
 // Created by asus on ۳۰/۰۱/۲۰۲۱.
 //
 
-#include <iomanip>
 #include "Huffman.h"
+#include <algorithm>
+#include <list>
+#include <sstream>
+#include <iomanip>
+#include <math.h>
+#include <cstdint>
+using namespace std;
 map<string, string> Huffman::creatCharsCode() {
     //create each characters code
     auto temp=leafs;
@@ -54,6 +60,46 @@ void Huffman::buildHuffmanTree() {
     int n2=leafs.size();
     this->charactersCode = creatCharsCode();  //create each characters code base on the tree
     printHuffTreePostOrder(pq.top(),0);
+
+}
+void Huffman::buildHuffmanTree2() {
+    //read a file and build huffman tree for decoding
+    ifstream infile;
+    infile.open(this->fileName);
+    list<Node*> nodes;
+    if (infile.good())
+    {
+        string sLine;  //first line of file
+        getline(infile, sLine);
+        string sLine2;  //second file of file
+        //remove tabs in sLine
+        sLine.erase(std::remove(sLine.begin(), sLine.end(), '\t'), sLine.end());
+        int j=0;
+        while (j < sLine.length()){ //find each char and its num of repeats
+            string s="";
+            s+=sLine[j];
+            j++;
+            string s2="";
+            while (!isalpha(sLine[j])){   //find num of repeats of chars
+                s2+=sLine[j];
+                j++;
+            }
+            stringstream geek(s2);
+            int temp=0;
+            geek >> temp;
+            auto myNode=new Node(s,temp);
+            nodes.push_back(myNode);
+        }
+    }
+
+    infile.close();
+    for (auto const& i: nodes) {
+        // std::cout << i->data <<'\t'<<i->numOfRepeats << "\n";
+        this->pq.push(i);
+    }
+    this->leafs=pq;
+    buildHuffmanTree();
+    // printHuffTreePostOrder(pq.top(),0);
 
 }
 

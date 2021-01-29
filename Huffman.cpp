@@ -50,3 +50,13 @@ void Huffman::separateChars(string str) {
 
     }
 }
+string Huffman::textToString() {
+    //read a text from file and convert it to string
+    ifstream file(this->fileName);
+    string text;
+    if (file.is_open())
+        while (file.good())
+            getline(file, text);
+    file.close();
+    return text;
+}

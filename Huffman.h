@@ -12,12 +12,13 @@
 #include <queue>
 #include <cstddef>
 #include <bitset>
+#include "Node.h"
 using namespace std;
 class Huffman {
 private:
-
+    string fileName;
 public:
-
+    bool isText();
 };
 
 

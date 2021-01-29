@@ -19,6 +19,9 @@ public:
     Node* parent;
     std::string data;
     int numOfRepeats;
+    Node();
+    Node(std::string data, int numOfRepeats);
+    ~Node();
 };
 
 

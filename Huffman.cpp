@@ -201,6 +201,29 @@ void Huffman::compress(string s) {
     MyFile.close();
 
 }
+string Huffman::decompress(string hmCode) {
+    //converting a binary string of bytes to string of 0s and 1s
+    string text="";
+    for(int i=0;i<hmCode.length()-1;i++){
+        for (int j = 0; j <8 ; ++j) {
+            int num=pow(2,7-j);
+            if(hmCode[i] & num){
+                text+='1';
+            }else{
+                text+='0';
+            }
+        }
+    }
+    int lastByte=hmCode[hmCode.length()-1] - '0'; //converting char to int
+    int size=(hmCode.length()-2)*8+lastByte; //calculate size of output string
+    string text2="";
+    for (int k = 0; k <size ; ++k) {
+        text2+=text[k];
+    }
+    return text2;
+}
+
+
 
 
 int Huffman::findRepeatsNum(string text, char c) {

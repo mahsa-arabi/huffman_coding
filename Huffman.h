@@ -39,6 +39,7 @@ public:
     void compress(string s);
     void encode();
     void buildHuffmanTree2();
+    string decompress(string hmCode);
 };
 
 

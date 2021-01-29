@@ -19,6 +19,8 @@ private:
     string fileName;
 public:
     bool isText();
+    int findRepeatsNum(string text,char c);
+    void separateChars(string str);
 };
 
 

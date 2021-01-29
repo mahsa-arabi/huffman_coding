@@ -23,3 +23,30 @@ bool Huffman::isText() {
     }
 
 }
+
+int Huffman::findRepeatsNum(string text, char c) {
+    int count=0;
+    for (int i = 0; i < text.size(); i++)
+        if (text[i] == c) count++;
+    return count;
+}
+
+void Huffman::separateChars(string str) {
+    //push all chars in the string with their num of repeats in priority queue
+    int index = 0;
+    // Traverse through all characters
+    for (int i=0; i<str.size(); i++) {
+        // Check if str[i] is repeated
+        int j;
+        for (j=0; j<i; j++)
+            if (str[i] == str[j])
+                break;
+        // If not present, add it to priority queue
+        if (j == i){
+            string s="";
+            s+=str[i];
+            pq.push(new Node(s,findRepeatsNum(str,str[i])));
+        }
+
+    }
+}

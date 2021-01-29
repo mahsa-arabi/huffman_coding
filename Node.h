@@ -22,6 +22,13 @@ public:
     Node();
     Node(std::string data, int numOfRepeats);
     ~Node();
+    void setLeft(Node *left);
+    void setRight(Node* right);
+    void setIsRight(bool isRight);
+    void setIsLeft(bool isLeft);
+    void setParent(Node *parent);
+    Node *getRight() const;
+    Node *getLeft() const;
 };
 
 

@@ -24,3 +24,34 @@ Node::~Node() {
     delete right;
     delete parent;
 }
+void Node::setLeft(Node *left) {
+    this->left=left;
+}
+
+void Node::setRight(Node *right) {
+    this->right=right;
+}
+
+void Node::setParent(Node *parent) {
+    this->parent=parent;
+}
+void Node::setIsRight(bool isRight) {
+    this->isRight = isRight;
+}
+
+void Node::setIsLeft(bool isLeft) {
+    this->isLeft = isLeft;
+}
+
+Node *Node::getRight() const {
+    return right;
+}
+
+Node *Node::getLeft() const {
+    return left;
+}
+
+
+
+
+

@@ -10,6 +10,16 @@
 #include <math.h>
 #include <cstdint>
 using namespace std;
+
+Huffman::Huffman(string fileName) {
+    this->fileName=fileName;
+    if(isText()){
+        encode();
+    }else{
+        decode();
+    }
+}
+
 map<string, string> Huffman::creatCharsCode() {
     //create each characters code
     auto temp=leafs;

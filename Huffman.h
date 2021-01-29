@@ -29,6 +29,7 @@ private:
     map<string,string> charactersCode;
     string fileName;
 public:
+    Huffman(string fileName);
     bool isText();
     int findRepeatsNum(string text,char c);
     void separateChars(string str);

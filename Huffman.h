@@ -26,6 +26,7 @@ private:
     };
     priority_queue<Node*, vector<Node*>, compare> pq;
     priority_queue<Node*, vector<Node*>, compare> leafs;
+    map<string,string> charactersCode;
     string fileName;
 public:
     bool isText();
@@ -34,6 +35,7 @@ public:
     string textToString();
     map<string,string> creatCharsCode();
     void printHuffTreePostOrder(Node* p, int i);
+    void buildHuffmanTree();
 };
 
 

@@ -29,6 +29,34 @@ map<string, string> Huffman::creatCharsCode() {
     return characters;
 }
 
+void Huffman::buildHuffmanTree() {
+    //building huffman tree
+    this->leafs=pq;
+    while(pq.size() > 1) {
+        auto p=pq.top();
+        pq.pop();
+        auto q=pq.top();
+        pq.pop();
+
+        string concat="";
+        concat=q->data+p->data;
+        //build tree
+        auto root = new Node(concat, p->numOfRepeats + q->numOfRepeats);
+        root->setLeft(p);
+        p->setParent(root);
+        p->setIsLeft(true);
+        root->setRight(q);
+        q->setParent(root);
+        q->setIsRight(true);
+        pq.push(root);
+    }
+    int n=pq.size();
+    int n2=leafs.size();
+    this->charactersCode = creatCharsCode();  //create each characters code base on the tree
+    printHuffTreePostOrder(pq.top(),0);
+
+}
+
 void Huffman::printHuffTreePostOrder(Node* p, int i)
 {
     //print tree in the command line base on post order

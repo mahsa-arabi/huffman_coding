@@ -2,6 +2,7 @@
 // Created by asus on ۳۰/۰۱/۲۰۲۱.
 //
 
+#include <iomanip>
 #include "Huffman.h"
 map<string, string> Huffman::creatCharsCode() {
     //create each characters code
@@ -27,6 +28,26 @@ map<string, string> Huffman::creatCharsCode() {
     leafs=temp;
     return characters;
 }
+
+void Huffman::printHuffTreePostOrder(Node* p, int i)
+{
+    //print tree in the command line base on post order
+    if(p != NULL) {
+        if(p->getRight()) {
+            printHuffTreePostOrder(p->getRight(), i + 4);
+        }
+        if (i) {
+            std::cout << std::setw(i) << ' ';
+        }
+        if (p->getRight()) std::cout << " /\n" << std::setw(i) << ' ';
+        std::cout<< p->data <<p->numOfRepeats << "\n ";
+        if(p->getLeft()) {
+            std::cout << std::setw(i) << ' ' << " \\\n";
+            printHuffTreePostOrder(p->getLeft(), i + 4);
+        }
+    }
+}
+
 bool Huffman::isText() {
     //return true if the file name is a text(.txt) if is need to be encoded (not decoded)
     int i=0;

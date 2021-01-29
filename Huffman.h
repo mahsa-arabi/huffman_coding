@@ -33,6 +33,7 @@ public:
     void separateChars(string str);
     string textToString();
     map<string,string> creatCharsCode();
+    void printHuffTreePostOrder(Node* p, int i);
 };
 
 

@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/asus/CLionProjects/huffman-coding/Huffman.h
+string
+-
+fstream
+-
+iostream
+-
+map
+-
+queue
+-
+cstddef
+-
+bitset
+-
+Node.h
+C:/Users/asus/CLionProjects/huffman-coding/Node.h
+
+C:/Users/asus/CLionProjects/huffman-coding/Node.h
+iosfwd
+-
+string
+-
+vector
+-
+
+C:/Users/asus/CLionProjects/huffman-coding/main.cpp
+iostream
+-
+Huffman.h
+C:/Users/asus/CLionProjects/huffman-coding/Huffman.h
+bitset
+-
+
